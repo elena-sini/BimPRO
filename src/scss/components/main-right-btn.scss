@@ -1,0 +1,19 @@
+.main-right-btn {
+   font-family: $font-secondary;
+   width: 260px;
+   height: 50px;
+   font-size: 18px;
+   color: #fff;
+   background: #e74214;
+   border-radius: 6px 6px 0 0;
+   transform: rotate(-90deg);
+   display: inline-block;
+   text-align: center;
+   position: fixed;
+   z-index: 4;
+   top: 50%;
+   right: -105px;
+   margin-top: -25px;
+   line-height: 55px;
+   transition: .7s;
+}

@@ -10,18 +10,17 @@ $transition: (
 %active {
    &:before {
       transition: none;
-      box-shadow: inset 0.0625em 0.0625em 0.3em rgba(#000, 0.2);
+      box-shadow: inset 0.0625em 0.0625em 0.3em rgba(var(--color-main--rgb), 0.2);
    }
 }
-;
+
 /*
    <button class="btn outline">
       <span>View Intro</span>
       <span class="_icon-play-circle"></span>
    </button>
-   <button class="btn">
-      <span>Explore Now</span>
-   </button>
+
+   <button class="btn">Explore Now</button>
 */
 
 .btn {
@@ -31,7 +30,7 @@ $transition: (
    justify-content: center;
    align-items: center;
    text-decoration: none !important;
-   line-height: 1;
+
    white-space: nowrap;
    margin: 0;
    cursor: pointer;
@@ -41,19 +40,20 @@ $transition: (
    z-index: 1;
 
    // Text
-   font-family: $fontFamily;
-   font-size: 1em;
+   font-family: var(--font-family);
+   font-size: var(--font-size);
+   line-height: 1;
    font-weight: 500;
    text-align: center;
    text-transform: none;
 
    // Appearance
    gap: 0.625em;
-   border: 0.0625em solid transparent;
-   border-radius: 0.2em;
-   padding: 0.8em 1.5em;
+   border: rem(1) solid var(--color-theme);
+   border-radius: rem(5);
+   padding: rem(14) rem(30);
    color: #fff;
-   background-color: var(--theme-color);
+   background-color: var(--color-theme);
    @include transition;
 
    >svg,
@@ -63,10 +63,18 @@ $transition: (
       margin: -0.1em 0;
    }
 
-   &:before {
+   span {
+      &::before {
+         font-size: rem(12);
+         color: inherit;
+
+      }
+   }
+
+   &:after {
       content: "";
       display: block;
-      border-radius: inherit;
+      border-radius: rem(5);
       position: absolute;
       left: 0;
       top: 0;
@@ -99,9 +107,9 @@ $transition: (
    // Animations
    &:hover,
    &:active {
-      &:before {
+      &:after {
          right: 0;
-         background-color: rgba(#fff, 0.16);
+         background-color: rgba(var(--color-light--rgb), 0.16);
       }
    }
 
@@ -111,13 +119,13 @@ $transition: (
 
    // .btn.secondary
    &.secondary {
-      color: var(--main-color);
-      background-color: rgba(var(--color--rgb), 0.06);
+      color: var(--color-main);
+      background-color: rgba(var(--color-main--rgb), 0.06);
 
       &:hover,
       &:active {
-         &:before {
-            background-color: rgba(#808080, 0.07);
+         &:after {
+            background-color: rgba(var(--color-gray--rgb), 0.07);
          }
       }
 
@@ -128,16 +136,16 @@ $transition: (
 
    // .btn.outline
    &.outline {
-      color: var(--color);
-      border-color: var(--color);
+      color: var(--color-main);
+      border-color: var(--color-main);
       background-color: transparent;
 
       &:hover,
       &:active {
-         color: var(--theme-color);
-         border-color: var(--theme-color);
+         color: var(--color-theme);
+         border-color: var(--color-theme);
 
-         &:before {
+         &:after {
             background-color: transparent;
          }
       }
@@ -154,8 +162,8 @@ $transition: (
 
       &:hover,
       &:active {
-         &:before {
-            background-color: rgba(#808080, 0.07);
+         &:after {
+            background-color: rgba(var(--color-gray--rgb), 0.07);
          }
       }
 

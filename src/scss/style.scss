@@ -8,7 +8,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:regular,500&display=swap");
 
 // Подключить если есть локальные файлы шрифтов
-//@import "fonts/fonts";
+@import "fonts/fonts";
 
 // Подключение иконочных шрифтов =======================================================================
 // Подключить если есть файл иконочного шрифта
@@ -18,22 +18,24 @@
 // =====================================================================================================
 // Настройки шаблона ===================================================================================
 $fontFamily: "Roboto", sans-serif;
+$font-primary: 'Bebas Neue', sans-serif;
+$font-secondary: 'Rubik', sans-serif;
+
 $fontSize: rem(16); // где 14(px) - размер шрифта по умолчанию из макета
 
 // Основные цвета
 $colors: (
    color-main: #333,
-   color-light: #fff,
-   bg-color: #f5f5f5,
-   theme-color: #52c288,
-   gray-color: #808080,
+   color-white: #ffffff,
+   color-light: #EFEFEF,
+   color-bg-light: #2E2E31,
+   color-bg-medium: #222224,
+   color-bg-dark: #171719,
+   color-theme: #EA4C14,
+   color-gray: #808080,
 
    placeholder-color: #ccc,
-
-   selection-color: #aaa,
-   selection-background-color: #333,
-
-   burger-color: #000,
+   color-burger: #EFEFEF,
 );
 
 $burger-width: rem(26);
@@ -54,7 +56,7 @@ $minWidth: 320;
 // Ширина полотна (макета)
 $maxWidth: 1920;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 1170;
+$maxWidthContainer: 1370;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPadding: 30;
@@ -72,11 +74,53 @@ $mobileSmall: em(479.98); // Телефоны S
 // 1 = отзывчивость (у контейнера нет брейкпоинтов), 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
 $responsiveType: 1;
 //======================================================================================================
+//======================================================================================================
+@import "core/colors";
+// Обнуление ===========================================================================================
+@import "core/null";
+// Стили тега BODY =====================================================================================
+body {
+   color: var(--color-light);
+   font-weight: 400;
+   line-height: 1;
+   font-family: $fontFamily;
+   font-size: $fontSize;
+   background: var(--color-bg-light);
+   //text-rendering: optimizeLegibility;
+   -ms-text-size-adjust: 100%;
+   -moz-text-size-adjust: 100%;
+   -webkit-text-size-adjust: 100%;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   // Скролл заблокирован
+   .lock & {
+      overflow: hidden;
+      touch-action: none;
+      overscroll-behavior: none;
+   }
+   // Сайт загружен
+   .loaded & {}
+}
+//======================================================================================================
+// Оболочка wrapper ====================================================================================
+.wrapper {
+   min-height: 100%;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+   // Прижимаем footer
+   >main {
+      flex: 1 1 auto;
+   }
+   // Фикс для слайдеров
+   >* {
+      min-width: 0;
+   }
+}
+//======================================================================================================
 // Ограничивающий контейнер ============================================================================
-
 /*Стили будут применяться ко всем классам содержащим *__container. Например header__container, main__container и т.д.
 Снипет (HTML): cnt*/
-
 @if ($responsiveType==1) {
    // Отзывчивая
    [class*="__container"] {
@@ -122,49 +166,7 @@ $responsiveType: 1;
    }
 }
 //======================================================================================================
-@import "core/colors";
-// Обнуление ===========================================================================================
-@import "core/null";
-//======================================================================================================
-// Стили тега BODY =====================================================================================
-body {
-   color: var(--main-color);
-   font-weight: 400;
-   line-height: 1;
-   font-family: $fontFamily;
-   font-size: $fontSize;
-   //text-rendering: optimizeLegibility;
-   -ms-text-size-adjust: 100%;
-   -moz-text-size-adjust: 100%;
-   -webkit-text-size-adjust: 100%;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   // Скролл заблокирован
-   .lock & {
-      overflow: hidden;
-      touch-action: none;
-      overscroll-behavior: none;
-   }
-   // Сайт загружен
-   .loaded & {}
-}
-//======================================================================================================
-// Оболочка wrapper ====================================================================================
-.wrapper {
-   min-height: 100%;
-   display: flex;
-   flex-direction: column;
-   overflow: hidden;
-   // Прижимаем footer
-   >main {
-      flex: 1 1 auto;
-   }
-   // Фикс для слайдеров
-   >* {
-      min-width: 0;
-   }
-}
-//======================================================================================================
+
 //======================================================================================================
 
 // Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
