@@ -1,1 +1,22 @@
 // Заголовки, общие БЄМ блоки и проче...
+.page {
+   // .page__hero
+   &__hero {
+      margin-bottom: rem(80);
+   }
+   // .page__services
+   &__services {
+      @include adaptiveValue("margin-bottom", 160, 60);
+   }
+}
+
+.bebas {
+   font-family: $font-primary;
+}
+.rubik {
+   font-family: $font-secondary;
+}
+.text {
+   font-size: rem(18);
+   line-height: math.div(27, 18);
+}

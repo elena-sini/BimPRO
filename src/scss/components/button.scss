@@ -30,7 +30,6 @@ $transition: (
    justify-content: center;
    align-items: center;
    text-decoration: none !important;
-
    white-space: nowrap;
    margin: 0;
    cursor: pointer;
@@ -40,19 +39,21 @@ $transition: (
    z-index: 1;
 
    // Text
-   font-family: var(--font-family);
-   font-size: var(--font-size);
-   line-height: 1;
-   font-weight: 500;
+   font-family: $fontFamily;
+   font-size: rem(18);
+   font-weight: 400;
+   line-height: math.div(27, 18);
+   font-weight: 400;
    text-align: center;
+   letter-spacing: 0.01em;
    text-transform: none;
 
    // Appearance
    gap: 0.625em;
    border: rem(1) solid var(--color-theme);
-   border-radius: rem(5);
+   border-radius: rem(6);
    padding: rem(14) rem(30);
-   color: #fff;
+   color: var(--color-light);
    background-color: var(--color-theme);
    @include transition;
 
@@ -86,12 +87,11 @@ $transition: (
 
    // Sizes
    &.sm {
-      padding: 0.6em 1.2em;
-      font-size: 0.9em;
+      width: rem(320);
    }
 
    &.lg {
-      padding: 1em 2em;
+      width: rem(400);
       font-size: 1.2em;
    }
 
@@ -136,8 +136,8 @@ $transition: (
 
    // .btn.outline
    &.outline {
-      color: var(--color-main);
-      border-color: var(--color-main);
+      color: var(--color-light);
+      border-color: var(--color-border);
       background-color: transparent;
 
       &:hover,

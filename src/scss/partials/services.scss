@@ -1,0 +1,82 @@
+.services {
+   // .services__container
+   &__container {}
+   // .services__title
+   &__title {
+      font-weight: 700;
+      @include adaptiveValue("font-size", 50, 34);
+      line-height: math.div(68, 50);
+      @include adaptiveValue("margin-bottom", 80, 30);
+   }
+   // .services__inner
+   &__inner {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      @include adaptiveValue("gap", 30, 15, 0, 1920, 992);
+   }
+   // .services__item
+   &__item {
+      grid-column: span 4;
+      padding: rem(50) 30px;
+      @include adaptiveValue("padding-top", 50, 20);
+      @include adaptiveValue("padding-bottom", 50, 20);
+      @include adaptiveValue("padding-left", 30, 15);
+      padding-right: rem(30);
+      @media (max-width:$tablet) {
+         grid-column: span 6;
+      }
+      @media (max-width:$mobile) {
+         grid-column: span 12;
+      }
+   }
+}
+.item-services {
+   background: #191919;
+   border: 2px solid #464646;
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   // justify-content: center;
+   gap: rem(20);
+   position: relative;
+   transition: all 0.3s ease 0s;
+   // .item-services__icon
+   &__icon {
+      flex: 0 0 rem(100);
+      img {
+         max-width: 100%;
+      }
+      @media (max-width:$tablet) {
+         flex: 0 0 rem(80);
+      }
+      @media (max-width:$mobile) {
+         flex: 0 0 rem(60);
+      }
+   }
+   // .item-services__link
+   &__link {
+      flex: 1 1 auto;
+      @include adaptiveValue("font-size", 22, 14);
+      line-height: math.div(27, 22);
+      color: var(--color-light);
+      letter-spacing: 0.01em;
+      transition: color 0.3s ease 0s;
+      &::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+      }
+   }
+   @media (any-hover: hover) {
+      &:hover {
+         border: 2px solid var(--color-theme);
+         .item-services__link {
+            color: var(--color-white);
+         }
+      }
+   }
+}
