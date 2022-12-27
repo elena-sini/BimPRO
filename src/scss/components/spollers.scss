@@ -1,0 +1,120 @@
+// Базовые стили спойлеров
+// Сниппет (HTML): spoller
+
+// Блок со спойлерами
+.spollers {
+   display: grid;
+   gap: 15px;
+}
+// Спойлер
+.spollers__item {
+   padding: rem(30);
+   border-bottom: 1px solid rgba(#E3E2E2, 0.2);
+
+}
+// Заголовок спойлера
+.spollers__title {
+   width: 100%;
+   cursor: default;
+   text-align: left;
+   @include adaptiveValue("padding-left", 80, 20, 0, 1920, 992);
+   position: relative;
+   font-size: rem(22);
+   line-height: math.div(27, 22);
+   letter-spacing: 0.01em;
+   color: var(--color-white);
+   transition: color 0.3s ease 0s;
+   display: flex;
+   align-items: center;
+   gap: rem(10);
+   ._spoller-init & {
+      cursor: pointer;
+      &::before {
+         content: "";
+         display: block;
+         background: url('@img/icons/arrow-down-white.svg') left center / 100% no-repeat;
+         height: 8px;
+         width: 16px;
+         transition: transform 0.3s ease 0s, background 0.3s ease 0s;
+      }
+      &::before {
+         transform: translate(-75%, -50%);
+      }
+      @media (any-hover: hover) {
+         &:hover {
+            color: var(--color-theme);
+            &::before {
+               background: url('@img/icons/arrow-down.svg') left center / 100% no-repeat;
+            }
+         }
+      }
+      &._spoller-active {
+
+         color: var(--color-theme);
+         &::before {
+            background: url('@img/icons/arrow-down.svg') left center / 100% no-repeat;
+            transform: translate(-75%, -50%) rotate(-180deg);
+         }
+      }
+      /*
+		._spoller-init & {
+			position: relative;
+			width: 100%;
+			text-align: left;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				right: 0;
+				top: rem(12);
+				height: rem(1);
+				transition: all 0.3s ease 0s;
+				width: rem(10);
+				background-color: #000;
+			}
+			&::before {
+				transform: rotate(40deg);
+				right: rem(7);
+			}
+			&::after {
+				transform: rotate(-40deg);
+			}
+		}
+		&._spoller-active {
+			&::before {
+				transform: rotate(-40deg);
+			}
+			&::after {
+				transform: rotate(40deg);
+			}
+		}
+		*/
+   }
+}
+// Контент спойлера
+.spollers__body {
+   padding: rem(30) rem(50);
+   font-size: rem(18);
+   line-height: math.div(27, 18);
+   letter-spacing: 0.02em;
+   color: var(--color-light);
+   // .spollers__body_label
+   &_label {}
+   // .spollers__body_list
+   &_list {}
+   // .spollers__body_item
+   &_item {
+      padding-left: rem(28);
+      position: relative;
+      &::before {
+         content: '';
+         position: absolute;
+         left: 0;
+         top: rem(12);
+         height: rem(4);
+         width: rem(4);
+         background: var(--color-light);
+         border-radius: 50%;
+      }
+   }
+}

@@ -9,8 +9,13 @@
       @include adaptiveValue("margin-bottom", 160, 60);
    }
    // .page__info
-   &__info {
-      @include adaptiveValue("margin-bottom", 150, 50);
+   &__info {}
+   // .page__about
+   &__about {
+      padding-bottom: rem(50);
+      @media (max-width:$tablet) {
+         display: none;
+      }
    }
 }
 
@@ -23,4 +28,10 @@
 .text {
    font-size: rem(18);
    line-height: math.div(27, 18);
+}
+.btn-reset {
+   border: none;
+   padding: 0;
+   background: transparent;
+   cursor: pointer;
 }
