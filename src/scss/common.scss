@@ -8,6 +8,10 @@
    &__services {
       @include adaptiveValue("margin-bottom", 160, 60);
    }
+   // .page__info
+   &__info {
+      @include adaptiveValue("margin-bottom", 150, 50);
+   }
 }
 
 .bebas {

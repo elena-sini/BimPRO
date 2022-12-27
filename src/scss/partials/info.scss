@@ -1,0 +1,112 @@
+.info {
+   background: var(--color-bg-dark);
+   // .info__container
+   &__container {
+      display: flex;
+      align-items: flex-end;
+      padding-right: 0;
+
+
+   }
+   // .info__content
+   &__content {
+      flex: 0 0 percent(500, 1370);
+      @media (max-width:$tablet) {
+         flex: 1 1 auto;
+      }
+   }
+   // .info__img-ibg
+   &__img-ibg {
+      flex: 1 1 auto;
+      padding-bottom: 41%;
+      @media (max-width:$tablet) {
+         padding-bottom: 0;
+      }
+   }
+}
+.content-info {
+   @include adaptiveValue("padding-right", 36, 20, 0, 1920, 992);
+   @include adaptiveValue("padding-top", 60, 30);
+   @include adaptiveValue("padding-bottom", 60, 30);
+   @media (max-width:$tablet) {
+      display: flex;
+      position: relative;
+      align-items: flex-start;
+   }
+   @media (max-width:$mobile) {
+      flex-direction: column;
+      align-items: center;
+      gap: rem(30);
+   }
+   // .content-info__decor
+   &__decor {}
+   // .content-info__title
+   &__title {
+      font-weight: 700;
+      @include adaptiveValue("font-size", 60, 40, 0, 1920, 1370);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      p {
+         font-weight: 400;
+         font-size: rem(16);
+         line-height: math.div(20, 16);
+         letter-spacing: 0.01em;
+         color: #A5A5A5;
+         margin-top: rem(20);
+      }
+      @media (max-width:$mobile) {
+         text-align: center;
+         p {
+            margin-top: rem(40);
+         }
+      }
+   }
+}
+.decor-info {
+   display: flex;
+   align-items: flex-end;
+   gap: rem(15);
+   @media (min-width:$tablet) {
+      margin-bottom: rem(60);
+   }
+   // .decor-info__label
+   &__label {
+      height: rem(200);
+      border: 2px solid #FFFFFF;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+
+      // .decor-info__label_number
+      &_number {
+         background: url('@img/icons/label-number.svg') 0 0 no-repeat;
+         width: rem(140);
+         height: rem(90);
+      }
+      // .decor-info__label_icon
+      &_icon {
+         position: relative;
+         background: var(--color-theme);
+         min-height: rem(200);
+         width: rem(44);
+         bottom: rem(-2);
+         right: rem(-2);
+         &::before {
+            content: '';
+            position: absolute;
+            background: url('@img/icons/label-icon.svg') 0 0 no-repeat;
+            height: rem(50);
+            width: rem(40);
+            bottom: rem(4);
+            right: rem(2);
+         }
+      }
+   }
+   // .decor-info__text
+   &__text {
+      font-size: rem(16);
+      line-height: math.div(20, 16);
+      letter-spacing: 0.01em;
+      color: #A5A5A5;
+   }
+}

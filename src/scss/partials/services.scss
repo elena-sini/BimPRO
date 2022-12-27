@@ -14,6 +14,7 @@
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: auto;
       @include adaptiveValue("gap", 30, 15, 0, 1920, 992);
+      @include adaptiveValue("margin-bottom", 160, 40);
    }
    // .services__item
    &__item {
@@ -28,6 +29,35 @@
       }
       @media (max-width:$mobile) {
          grid-column: span 12;
+      }
+   }
+   // .services__bottom
+   &__bottom {
+      position: relative;
+      &::before,
+      &::after {
+         content: '';
+         position: absolute;
+         background: #515151;
+      }
+      &::before {
+         left: 15px;
+         bottom: -15px;
+         height: 120%;
+         width: rem(1);
+      }
+      &::after {
+         width: rem(24);
+         height: rem(1);
+         left: rem(4);
+         bottom: 0;
+         transform: rotate(135deg);
+      }
+      @media (max-width:$tablet) {
+         &::before {
+            bottom: 0;
+            height: 100%;
+         }
       }
    }
 }
@@ -77,6 +107,146 @@
          .item-services__link {
             color: var(--color-white);
          }
+      }
+   }
+}
+
+.bottom-services {
+   &__inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding-left: rem(15);
+      padding-right: rem(15);
+      align-items: stretch;
+      @media (max-width:$tablet) {
+         position: relative;
+         grid-template-columns: repeat(2, 1fr);
+         &::after {
+            content: '';
+            position: absolute;
+            right: 15px;
+            bottom: 0;
+            width: 1px;
+            height: 100%;
+            background: #515151;
+         }
+      }
+      @media (max-width: em(700)) {
+         grid-template-columns: 1fr;
+      }
+   }
+   // .bottom-services__item
+   &__item {
+      border-bottom: 1px solid #515151;
+      padding: rem(20);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+      &::before,
+      &::after {
+         content: '';
+         position: absolute;
+         background: #515151;
+      }
+      &::before {
+         right: 0;
+         bottom: -15px;
+         height: 120%;
+         width: rem(1);
+      }
+      &::after {
+         width: rem(24);
+         height: rem(2);
+         right: -12px;
+         bottom: 0;
+         transform: rotate(135deg);
+      }
+      @media (any-hover: hover) {
+         &:hover {
+            .bottom-services__tippy {
+               visibility: visible;
+               opacity: 1;
+            }
+         }
+      }
+      @media (max-width:$tablet) {
+         &:nth-child(2n-1) {
+            border-right: 1px solid #515151;
+            border-left: 1px solid #515151;
+            &::before {
+               width: rem(24);
+               height: rem(2);
+               left: -12px;
+               bottom: 0;
+               transform: rotate(135deg);
+            }
+         }
+         &:nth-child(2n) {
+            &::before {
+               display: none;
+            }
+         }
+      }
+      @media (max-width: em(700)) {
+         &:nth-child(2n),
+         &:nth-child(2n-1) {
+            &::before {
+               display: block;
+               width: rem(24);
+               height: rem(2);
+               left: -12px;
+               bottom: 0;
+               transform: rotate(135deg);
+            }
+            &::after {
+               right: -12px;
+            }
+         }
+      }
+   }
+   // .bottom-services__text
+   &__text {
+      text-align: center;
+      @include adaptiveValue("font-size", 28, 20);
+      line-height: math.div(30, 28);
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      span {
+         display: block;
+         color: var(--color-theme);
+
+      }
+      &_a {
+         display: block;
+         color: var(--color-theme);
+         transition: color 0.3s ease 0s;
+         @media (any-hover: hover) {
+            &:hover {
+               color: rgba(var(--color-theme--rgb), 0.8);
+            }
+         }
+      }
+   }
+   // .bottom-services__tippy
+   &__tippy {
+      position: absolute;
+      background: rgba(var(--color-bg-dark--rgb), 0.8);
+      border-radius: 0px 6px 6px 6px;
+      top: 90%;
+      left: rem(80);
+      padding: rem(10);
+      z-index: 2;
+      min-height: rem(100);
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.3s ease 0s, opacity 0.3s ease 0s;
+      p {
+         font-size: rem(14);
+         line-height: math.div(20, 14);
+         letter-spacing: 0.01em;
+         color: #9DA0A3;
       }
    }
 }
