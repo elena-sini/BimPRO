@@ -14,11 +14,11 @@
       @include adaptiveValue("font-size", 50, 40, 0, 1920, 992);
       line-height: 1;
       text-align: left;
-      color: var(--color-light);
+      color: var(--color-theme);
       position: relative;
       transition: all 0.3s ease 0s;
       span {
-         color: var(--color-theme);
+         color: var(--color-light);
       }
       &:not(:last-child) {
          padding-bottom: rem(46);

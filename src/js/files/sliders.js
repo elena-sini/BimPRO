@@ -24,7 +24,87 @@ EffectFade, Lazy, Manipulation
 // import 'swiper/css';
 
 // Инициализация слайдеров
-function initSliders() {
+function initHeroSliders() {
+   // Перечень слайдеров
+   // Проверяем, есть ли слайдер на стронице
+   if (document.querySelector('.slider-hero__slider')) { // Указываем скласс нужного слайдера
+      // Создаем слайдер
+      new Swiper('.slider-hero__slider', { // Указываем скласс нужного слайдера
+         // Подключаем модули слайдера
+         // для конкретного случая
+         modules: [Navigation, Scrollbar],
+         observer: true,
+         observeParents: true,
+         slidesPerView: 1,
+         spaceBetween: 20,
+         // autoHeight: true,
+         speed: 800,
+
+         //touchRatio: 0,
+         //simulateTouch: false,
+         //loop: true,
+         //preloadImages: false,
+         //lazy: true,
+
+         /*
+         // Эффекты
+         effect: 'fade',
+         autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+         },
+         */
+
+         // Пагинация
+         /*
+         pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+         },
+         */
+
+         // Скроллбар
+         scrollbar: {
+            el: '.slider-hero__scrollbar',
+            draggable: true,
+         },
+
+         // Кнопки "влево/вправо"
+         navigation: {
+            prevEl: '.slider-hero__arow_prev',
+            nextEl: '.slider-hero__arow_next',
+         },
+
+         // Брейкпоинты
+         /*
+         breakpoints: {
+            320: {
+               slidesPerView: 1,
+               spaceBetween: 0,
+               autoHeight: true,
+            },
+            768: {
+               slidesPerView: 2,
+               spaceBetween: 20,
+            },
+            992: {
+               slidesPerView: 3,
+               spaceBetween: 20,
+            },
+            1268: {
+               slidesPerView: 4,
+               spaceBetween: 30,
+            },
+         },
+         */
+         // События
+         on: {
+
+         }
+      });
+   }
+}
+function initMainSliders() {
    // Перечень слайдеров
    // Проверяем, есть ли слайдер на стронице
    if (document.querySelector('.slider-hero__slider')) { // Указываем скласс нужного слайдера
@@ -135,7 +215,7 @@ function initSlidersScroll() {
 
 window.addEventListener("load", function (e) {
    // Запуск инициализации слайдеров
-   initSliders();
+   initHeroSliders();
    // Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
-   initSlidersScroll();
+   // initSlidersScroll();
 });
